@@ -4,18 +4,21 @@ RegisterNetEvent('msk_weaponammoitem:updateWeaponAmmo')
 AddEventHandler('msk_weaponammoitem:updateWeaponAmmo', function(item, weaponName, isShooting)
 	local src = source
 	local xPlayer = ESX.GetPlayerFromId(src)
-	local hasItem = xPlayer.getInventoryItem(item)
+	local hasItem = xPlayer.hasItem(item)
 
-	if hasItem then
-		if isShooting then
-			xPlayer.removeInventoryItem(item, 1)
+	if xPlayer then
+		if hasItem then
+			if isShooting then
+				--print('[DEBUG]', item, hasItem.count, weaponName, isShooting)
+				xPlayer.removeInventoryItem(item, 1)
+			end
+			
+			xPlayer.updateWeaponAmmo(weaponName, hasItem.count)
+			xPlayer.triggerEvent('esx:setWeaponAmmo', weaponName, hasItem.count)
+		else
+			xPlayer.updateWeaponAmmo(weaponName, 0)
+			xPlayer.triggerEvent('esx:setWeaponAmmo', weaponName, 0)
 		end
-		
-		xPlayer.updateWeaponAmmo(weaponName, hasItem.count)
-		xPlayer.triggerEvent('esx:setWeaponAmmo', weaponName, hasItem.count)
-	else
-		xPlayer.updateWeaponAmmo(weaponName, 0)
-		xPlayer.triggerEvent('esx:setWeaponAmmo', weaponName, 0)
 	end
 end)
 
