@@ -1,10 +1,9 @@
 ESX = exports["es_extended"]:getSharedObject()
 
-local playerPed = PlayerPedId()
-
 CreateThread(function()
 	while true do
-		Wait(100)
+		local sleep = 100
+		local playerPed = PlayerPedId()
 
 		if IsPedArmed(playerPed, 4) then
 			local hash = GetSelectedPedWeapon(playerPed)
@@ -17,12 +16,15 @@ CreateThread(function()
 				end
 			end
 		end
+
+		Wait(sleep)
 	end
 end)
 
 CreateThread(function()
 	while true do
-		Wait(0)
+		local sleep = 0
+		local playerPed = PlayerPedId()
 		
 		if IsPedArmed(playerPed, 4) and IsPedShooting(playerPed) then
 			local hash = GetSelectedPedWeapon(playerPed)
@@ -36,5 +38,7 @@ CreateThread(function()
 				end
 			end
 		end
+
+		Wait(sleep)
 	end
 end)
