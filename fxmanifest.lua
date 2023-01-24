@@ -2,9 +2,9 @@ fx_version 'adamant'
 games { 'gta5' }
 
 author 'Musiker15 - MSK Scripts'
-name 'msk_weaponammoitem'
+name 'msk_weaponammoitems'
 description 'Weapon Ammunition with Items'
-version '1.1'
+version '1.2'
 
 lua54 'yes'
 
