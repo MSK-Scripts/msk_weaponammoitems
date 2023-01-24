@@ -12,10 +12,10 @@ RegisterNetEvent('msk_weaponammoitem:updateWeaponAmmo')
 AddEventHandler('msk_weaponammoitem:updateWeaponAmmo', function(item, weaponName, isShooting)
 	local src = source
 	local xPlayer = ESX.GetPlayerFromId(src)
-	local hasItem = xPlayer.hasItem(item)
+	local hasItem = xPlayer.getInventoryItem(item)
 
 	if xPlayer then
-		if hasItem then
+		if hasItem and hasItem.count > 0 then
 			if isShooting then
 				--print('[DEBUG]', item, hasItem.count, weaponName, isShooting)
 				xPlayer.removeInventoryItem(item, 1)
