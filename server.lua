@@ -17,15 +17,14 @@ AddEventHandler('msk_weaponammoitem:updateWeaponAmmo', function(item, weaponName
 	if xPlayer then
 		if hasItem and hasItem.count > 0 then
 			if isShooting then
-				--print('[DEBUG]', item, hasItem.count, weaponName, isShooting)
 				xPlayer.removeInventoryItem(item, 1)
 			end
 			
 			xPlayer.updateWeaponAmmo(weaponName, hasItem.count)
-			xPlayer.triggerEvent('esx:setWeaponAmmo', weaponName, hasItem.count)
+            SetPedAmmo(GetPlayerPed(xPlayer.source), joaat(weaponName), hasItem.count)
 		else
 			xPlayer.updateWeaponAmmo(weaponName, 0)
-			xPlayer.triggerEvent('esx:setWeaponAmmo', weaponName, 0)
+            SetPedAmmo(GetPlayerPed(xPlayer.source), joaat(weaponName), 0)
 		end
 	end
 end)
