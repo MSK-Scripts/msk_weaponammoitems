@@ -1,13 +1,5 @@
 ESX = exports["es_extended"]:getSharedObject()
 
-AddEventHandler('onResourceStart', function(resource)
-	if GetCurrentResourceName() ~= 'msk_weaponammoitems' then
-        print('^1Please rename the Script to^3 msk_weaponammoitems^0!')
-        print('^1Server will be shutdown^0!')
-        os.exit()
-    end
-end)
-
 RegisterNetEvent('msk_weaponammoitem:updateWeaponAmmo')
 AddEventHandler('msk_weaponammoitem:updateWeaponAmmo', function(item, weaponName, isShooting)
 	local src = source
