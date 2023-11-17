@@ -1,5 +1,31 @@
 ESX = exports["es_extended"]:getSharedObject()
 
+for item, v in pairs(Config.AmmoPacks) do
+    ESX.RegisterUsableItem(item, function(playerId)
+        local src = playerId
+        local xPlayer = ESX.GetPlayerFromId(src)
+
+        xPlayer.triggerEvent('msk_weaponammoitem:checkAmmo', item, v)
+    end)
+end
+
+RegisterNetEvent('msk_weaponammoitem:addWeaponAmmo')
+AddEventHandler('msk_weaponammoitem:addWeaponAmmo', function(weaponName, item, data)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromId(src)
+    local hasItem = xPlayer.getInventoryItem(item)
+    if not hasItem or hasItem.count == 0 then return end
+
+    xPlayer.removeInventoryItem(item, 1)
+    xPlayer.addInventoryItem(data.item, data.amount)
+
+    local hasAmmo = xPlayer.getInventoryItem(data.item)
+    if not hasAmmo or hasAmmo.count == 0 then return end
+
+    xPlayer.updateWeaponAmmo(weaponName, hasAmmo.count + data.amount)
+    SetPedAmmo(GetPlayerPed(xPlayer.source), joaat(weaponName), hasAmmo.count + data.amount)
+end)
+
 RegisterNetEvent('msk_weaponammoitem:updateWeaponAmmo')
 AddEventHandler('msk_weaponammoitem:updateWeaponAmmo', function(item, weaponName, isShooting)
 	local src = source

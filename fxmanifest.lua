@@ -4,7 +4,7 @@ games { 'gta5' }
 author 'Musiker15 - MSK Scripts'
 name 'msk_weaponammoitems'
 description 'Weapon Ammunition with Items'
-version '1.3'
+version '1.4'
 
 lua54 'yes'
 

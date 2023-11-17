@@ -2,6 +2,16 @@ Config = {}
 ----------------------------------------------------------------
 Config.VersionChecker = true
 ----------------------------------------------------------------
+Config.AmmoPacks = {
+    -- Upload this item into your database!
+    
+    ['9mm_magazine'] = {item = '9mm', amount = 12},
+    ['12gauge_magazine'] = {item = '12gauge', amount = 25},
+    ['556mm_magazine'] = {item = '556mm', amount = 30},
+    ['762mm_magazine'] = {item = '762mm', amount = 30},
+    ['68kal_magazine'] = {item = '68kal', amount = 30},
+}
+
 Config.Ammunition = {
     ['9mm'] = { -- Upload this item into your database!
         'WEAPON_PISTOL',
