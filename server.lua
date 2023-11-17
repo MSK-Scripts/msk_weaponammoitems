@@ -20,10 +20,11 @@ AddEventHandler('msk_weaponammoitem:addWeaponAmmo', function(weaponName, item, d
     xPlayer.addInventoryItem(data.item, data.amount)
 
     local hasAmmo = xPlayer.getInventoryItem(data.item)
-    if not hasAmmo or hasAmmo.count == 0 then return end
+    local ammoToAdd = data.amount
+    if hasAmmo and hasAmmo.count > 0 then ammoToAdd = ammoToAdd + hasAmmo.count end
 
-    xPlayer.updateWeaponAmmo(weaponName, hasAmmo.count + data.amount)
-    SetPedAmmo(GetPlayerPed(xPlayer.source), joaat(weaponName), hasAmmo.count + data.amount)
+    xPlayer.updateWeaponAmmo(weaponName, ammoToAdd)
+    SetPedAmmo(GetPlayerPed(xPlayer.source), joaat(weaponName), ammoToAdd)
 end)
 
 RegisterNetEvent('msk_weaponammoitem:updateWeaponAmmo')
