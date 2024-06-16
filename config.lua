@@ -4,6 +4,7 @@ Config.VersionChecker = true
 ----------------------------------------------------------------
 Config.AmmoPacks = {
     -- Upload this item into your database!
+    -- Use those magazine items, then you get the items
     
     ['9mm_magazine'] = {item = '9mm', amount = 12},
     ['12gauge_magazine'] = {item = '12gauge', amount = 25},
@@ -13,6 +14,8 @@ Config.AmmoPacks = {
 }
 
 Config.Ammunition = {
+    -- If you have one of these items in your inventory you have automatically ammunition in your weapon
+    
     ['9mm'] = { -- Upload this item into your database!
         'WEAPON_PISTOL',
         'WEAPON_PISTOL_MK2',
